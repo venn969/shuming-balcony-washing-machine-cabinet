@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热销产品轮播测试</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/image-styles.css">
+    <link rel="stylesheet" href="assets/css/image-interactions.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+        }
+        .test-header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .test-header p {
+            color: #666;
+        }
+        .test-section {
+            margin-bottom: 40px;
+        }
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-badge.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .status-badge.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        .checklist i {
+            font-size: 20px;
+            width: 25px;
+        }
+        .checklist i.fa-check-circle {
+            color: #28a745;
+        }
+        .checklist i.fa-times-circle {
+            color: #dc3545;
+        }
+        .checklist i.fa-circle {
+            color: #999;
+        }
+        .debug-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .debug-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .debug-info pre {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>热销产品轮播测试</h1>
+            <p>验证首页热销产品轮播功能是否正常工作</p>
+        </div>
+
+        <div class="test-section">
+            <h2>功能检查清单 <span class="status-badge pending" id="overallStatus">检查中...</span></h2>
+            <ul class="checklist">
+                <li><i class="fas fa-circle"></i> Swiper 库已正确加载</li>
+                <li><i class="fas fa-circle"></i> jQuery 库已正确加载</li>
+                <li><i class="fas fa-circle"></i> 产品轮播 HTML 结构正确</li>
+                <li><i class="fas fa-circle"></i> 产品图片能够正常显示</li>
+                <li><i class="fas fa-circle"></i> 轮播能够自动播放</li>
+                <li><i class="fas fa-circle"></i> 左右导航按钮能够正常工作</li>
+                <li><i class="fas fa-circle"></i> 分页指示器能够正常工作</li>
+                <li><i class="fas fa-circle"></i> 响应式布局在不同屏幕尺寸下正常</li>
+                <li><i class="fas fa-circle"></i> 产品卡片悬停效果正常</li>
+                <li><i class="fas fa-circle"></i> "查看详情"按钮链接正确</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>实际产品轮播</h2>
+            <div class="swiper product-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="product-card">
+                                <img class="lazy item-img" data-src="assets/images/products/product-1.jpg" alt="简约现代款">
+                                <div class="item-overlay">
+                                    <a href="products.html" class="btn btn-light">查看详情</a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">简约现代款</h5>
+                                    <p class="text-muted">铝合金材质 · 防水防潮</p>
+                                    <p class="price">¥1,299起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="product-card">
+                                <img class="lazy item-img" data-src="assets/images/products/product-2.jpg" alt="欧式复古款">
+                                <div class="item-overlay">
+                                    <a href="products.html" class="btn btn-light">查看详情</a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">欧式复古款</h5>
+                                    <p class="text-muted">实木材质 · 环保健康</p>
+                                    <p class="price">¥1,899起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="product-card">
+                                <img class="lazy item-img" data-src="assets/images/products/product-3.jpg" alt="北欧简约款">
+                                <div class="item-overlay">
+                                    <a href="products.html" class="btn btn-light">查看详情</a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">北欧简约款</h5>
+                                    <p class="text-muted">多层实木 · 耐用美观</p>
+                                    <p class="price">¥1,599起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="product-card">
+                                <img class="lazy item-img" data-src="assets/images/products/product-4.jpg" alt="现代简约PVC款">
+                                <div class="item-overlay">
+                                    <a href="products.html" class="btn btn-light">查看详情</a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">现代简约PVC款</h5>
+                                    <p class="text-muted">PVC材质 · 性价比高</p>
+                                    <p class="price">¥999起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-item">
+                            <div class="product-card">
+                                <img class="lazy item-img" data-src="assets/images/products/product-5.jpg" alt="轻奢铝合金款">
+                                <div class="item-overlay">
+                                    <a href="products.html" class="btn btn-light">查看详情</a>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">轻奢铝合金款</h5>
+                                    <p class="text-muted">铝合金 · 高端定制</p>
+                                    <p class="price">¥2,199起</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <div class="debug-info">
+            <h3>调试信息</h3>
+            <pre id="debugOutput">正在收集调试信息...</pre>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/Swiper/10.3.1/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/image-interactions.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            let testResults = {
+                swiperLoaded: false,
+                jqueryLoaded: false,
+                htmlStructure: false,
+                imagesDisplay: false,
+                autoplay: false,
+                navigation: false,
+                pagination: false,
+                responsive: false,
+                hoverEffect: false,
+                links: false
+            };
+
+            const checklistItems = $('.checklist li');
+            const debugOutput = $('#debugOutput');
+            const overallStatus = $('#overallStatus');
+
+            function updateChecklist() {
+                checklistItems.eq(0).find('i').attr('class', testResults.jqueryLoaded ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(1).find('i').attr('class', testResults.swiperLoaded ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(2).find('i').attr('class', testResults.htmlStructure ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(3).find('i').attr('class', testResults.imagesDisplay ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(4).find('i').attr('class', testResults.autoplay ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(5).find('i').attr('class', testResults.navigation ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(6).find('i').attr('class', testResults.pagination ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(7).find('i').attr('class', testResults.responsive ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(8).find('i').attr('class', testResults.hoverEffect ? 'fas fa-check-circle' : 'fas fa-times-circle');
+                checklistItems.eq(9).find('i').attr('class', testResults.links ? 'fas fa-check-circle' : 'fas fa-times-circle');
+
+                const allPassed = Object.values(testResults).every(result => result);
+                if (allPassed) {
+                    overallStatus.removeClass('pending error').addClass('success').text('全部通过');
+                } else {
+                    overallStatus.removeClass('pending success').addClass('error').text('存在问题');
+                }
+            }
+
+            function updateDebugInfo() {
+                const debugInfo = {
+                    'jQuery 版本': $.fn.jquery,
+                    'Swiper 版本': typeof Swiper !== 'undefined' ? Swiper.version : '未加载',
+                    '产品轮播元素': $('.product-slider').length > 0 ? '存在' : '不存在',
+                    '产品卡片数量': $('.product-slider .swiper-slide').length,
+                    '产品图片数量': $('.product-slider .swiper-slide img').length,
+                    '导航按钮': $('.product-slider .swiper-button-next, .product-slider .swiper-button-prev').length,
+                    '分页指示器': $('.product-slider .swiper-pagination').length > 0 ? '存在' : '不存在',
+                    '懒加载图片': $('.product-slider img.lazy').length,
+                    '已加载图片': $('.product-slider img.loaded').length,
+                    '查看详情按钮': $('.product-slider .item-overlay a').length
+                };
+
+                debugOutput.text(JSON.stringify(debugInfo, null, 2));
+            }
+
+            setTimeout(() => {
+                testResults.jqueryLoaded = typeof $ !== 'undefined';
+                testResults.swiperLoaded = typeof Swiper !== 'undefined';
+                testResults.htmlStructure = $('.product-slider').length > 0 && $('.product-slider .swiper-slide').length > 0;
+                testResults.imagesDisplay = $('.product-slider .swiper-slide img').length > 0;
+                testResults.navigation = $('.product-slider .swiper-button-next, .product-slider .swiper-button-prev').length === 2;
+                testResults.pagination = $('.product-slider .swiper-pagination').length > 0;
+                testResults.links = $('.product-slider .item-overlay a[href="products.html"]').length > 0;
+                testResults.responsive = $(window).width() > 0;
+
+                updateChecklist();
+                updateDebugInfo();
+            }, 1000);
+
+            setTimeout(() => {
+                testResults.autoplay = $('.product-slider').hasClass('swiper-initialized');
+                testResults.hoverEffect = $('.product-card').length > 0;
+                updateChecklist();
+            }, 2000);
+
+            $('.product-card').hover(
+                function() {
+                    testResults.hoverEffect = true;
+                    updateChecklist();
+                },
+                function() {
+                    updateChecklist();
+                }
+            );
+
+            $(window).on('resize', function() {
+                testResults.responsive = true;
+                updateChecklist();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <rect x="2" y="2" width="296" height="296" fill="white" stroke="#07c160" stroke-width="4"/>
+  <text x="150" y="130" font-family="Arial, sans-serif" font-size="28" fill="#07c160" text-anchor="middle" font-weight="bold">微信收款码</text>
+  <text x="150" y="170" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">请替换为真实收款码</text>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="14" fill="#999" text-anchor="middle">保存为 wechat-pay.png</text>
+</svg>

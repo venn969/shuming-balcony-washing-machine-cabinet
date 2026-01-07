@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收款码占位符生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .qrcode-placeholder {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #333;
+            border-radius: 8px;
+            font-size: 18px;
+            color: #333;
+            background: white;
+        }
+        .wechat {
+            border-color: #07c160;
+            color: #07c160;
+        }
+        .alipay {
+            border-color: #1677ff;
+            color: #1677ff;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            color: #856404;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>舒铭阳台洗衣机柜 - 收款码占位符</h1>
+        
+        <div class="qrcode-placeholder wechat">
+            <div>
+                <i style="font-size: 48px;">💚</i><br>
+                微信收款码<br>
+                <small>请替换为真实收款码</small>
+            </div>
+        </div>
+        
+        <div class="qrcode-placeholder alipay">
+            <div>
+                <i style="font-size: 48px;">💙</i><br>
+                支付宝收款码<br>
+                <small>请替换为真实收款码</small>
+            </div>
+        </div>
+        
+        <div class="info">
+            <strong>使用说明：</strong><br>
+            1. 请将您的真实微信收款码图片保存为 <code>wechat-pay.png</code><br>
+            2. 请将您的真实支付宝收款码图片保存为 <code>alipay.png</code><br>
+            3. 将这两个文件放置在 <code>assets/images/</code> 目录下<br>
+            4. 确保图片尺寸建议为 250x250 像素或更大
+        </div>
+        
+        <button onclick="window.location.href='products.html'">返回产品页面</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付模态框测试</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/payment-modal.css">
+    <style>
+        body {
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+        }
+        .test-section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .test-btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+        }
+        .test-result {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+        .test-result.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+        }
+        .test-result.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        .checklist i {
+            font-size: 20px;
+        }
+        .checklist i.fa-check-circle {
+            color: #28a745;
+        }
+        .checklist i.fa-times-circle {
+            color: #dc3545;
+        }
+        .checklist i.fa-circle {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="text-center mb-5">支付模态框功能测试</h1>
+        
+        <div class="test-section">
+            <h2>1. 基础功能测试</h2>
+            <p>点击下方按钮测试支付模态框的打开功能：</p>
+            
+            <button class="btn btn-primary test-btn payment-trigger-btn" data-product="简约现代铝合金款" data-price="1299">
+                <i class="fas fa-shopping-cart"></i> 测试产品 1 (¥1,299)
+            </button>
+            
+            <button class="btn btn-success test-btn payment-trigger-btn" data-product="欧式复古实木款" data-price="1899">
+                <i class="fas fa-shopping-cart"></i> 测试产品 2 (¥1,899)
+            </button>
+            
+            <button class="btn btn-info test-btn payment-trigger-btn" data-product="北欧简约多层实木款" data-price="1599">
+                <i class="fas fa-shopping-cart"></i> 测试产品 3 (¥1,599)
+            </button>
+            
+            <div class="test-result" id="testResult1">
+                <strong>测试结果：</strong> 点击按钮后，支付模态框应该弹出，并显示对应的产品信息。
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>2. 功能检查清单</h2>
+            <ul class="checklist">
+                <li><i class="fas fa-circle"></i> 模态框能够正常打开和关闭</li>
+                <li><i class="fas fa-circle"></i> 产品名称和价格能够正确显示</li>
+                <li><i class="fas fa-circle"></i> 微信支付和支付宝标签页能够正常切换</li>
+                <li><i class="fas fa-circle"></i> 收款码图片能够正常显示</li>
+                <li><i class="fas fa-circle"></i> 重要提示和退款政策信息清晰可见</li>
+                <li><i class="fas fa-circle"></i> 点击模态框外部区域可以关闭模态框</li>
+                <li><i class="fas fa-circle"></i> 按 ESC 键可以关闭模态框</li>
+                <li><i class="fas fa-circle"></i> "付款后立即联系客服"按钮链接正确</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>3. 响应式设计测试</h2>
+            <p>调整浏览器窗口大小，测试不同设备上的显示效果：</p>
+            <div class="test-result">
+                <strong>测试要点：</strong>
+                <ul>
+                    <li>PC 端：模态框宽度适中，内容布局合理</li>
+                    <li>平板端：标签页可能需要垂直排列</li>
+                    <li>手机端：二维码图片大小适中，按钮易于点击</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>4. 风控与合规检查</h2>
+            <ul class="checklist">
+                <li><i class="fas fa-circle"></i> 明确标注付款金额（定金 ¥500）</li>
+                <li><i class="fas fa-circle"></i> 显示商品名称和价格</li>
+                <li><i class="fas fa-circle"></i> 退款政策清晰可见</li>
+                <li><i class="fas fa-circle"></i> 客服联系方式明确（电话和微信）</li>
+                <li><i class="fas fa-circle"></i> 重要提示信息醒目</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-modal-content">
+            <div class="payment-modal-header">
+                <h4>在线支付定金</h4>
+                <button class="payment-close-btn" id="paymentCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="payment-modal-body">
+                <div class="payment-info">
+                    <p class="payment-amount"><strong>定金金额：¥500</strong></p>
+                    <p class="payment-product">商品：<span id="paymentProductName">舒铭阳台洗衣机柜（定制款）</span></p>
+                    <p class="payment-price">商品价格：¥<span id="paymentProductPrice">0</span>起</p>
+                </div>
+                
+                <div class="payment-tabs">
+                    <button class="payment-tab active" data-tab="wechat">
+                        <i class="fab fa-weixin"></i> 微信支付
+                    </button>
+                    <button class="payment-tab" data-tab="alipay">
+                        <i class="fab fa-alipay"></i> 支付宝
+                    </button>
+                </div>
+                
+                <div class="payment-qrcode-container">
+                    <div class="payment-qrcode active" id="wechatQrcode">
+                        <img src="assets/images/wechat-pay.svg" alt="微信收款码" class="qrcode-img">
+                        <p class="qrcode-tip">请使用微信扫一扫</p>
+                    </div>
+                    <div class="payment-qrcode" id="alipayQrcode">
+                        <img src="assets/images/alipay.svg" alt="支付宝收款码" class="qrcode-img">
+                        <p class="qrcode-tip">请使用支付宝扫一扫</p>
+                    </div>
+                </div>
+                
+                <div class="payment-notice">
+                    <h5><i class="fas fa-info-circle text-warning"></i> 重要提示</h5>
+                    <ul>
+                        <li>付款后请截图保留付款凭证</li>
+                        <li>立即联系客服确认订单信息</li>
+                        <li>客服电话：<strong>400-888-8888</strong></li>
+                        <li>客服微信：<strong>shumingxj</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="payment-refund-policy">
+                    <h6><i class="fas fa-shield-alt text-success"></i> 退款政策</h6>
+                    <p>定金支付后，如需退款，请在3个工作日内联系客服，我们将为您办理退款。</p>
+                </div>
+            </div>
+            <div class="payment-modal-footer">
+                <a href="tel:400-888-8888" class="btn btn-primary w-100">
+                    <i class="fas fa-phone-alt"></i> 付款后立即联系客服
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/payment-modal.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            let testResults = {
+                modalOpenClose: false,
+                productInfo: false,
+                tabSwitch: false,
+                qrcodeDisplay: false,
+                noticeInfo: false,
+                outsideClick: false,
+                escKey: false,
+                contactLink: false
+            };
+
+            $('.payment-trigger-btn').on('click', function() {
+                const productName = $(this).data('product');
+                const productPrice = $(this).data('price');
+                
+                setTimeout(() => {
+                    testResults.modalOpenClose = true;
+                    
+                    const displayedProduct = $('#paymentProductName').text();
+                    const displayedPrice = $('#paymentProductPrice').text();
+                    
+                    if (displayedProduct === productName && displayedPrice === productPrice) {
+                        testResults.productInfo = true;
+                    }
+                    
+                    updateChecklist();
+                }, 500);
+            });
+
+            $('.payment-tab').on('click', function() {
+                testResults.tabSwitch = true;
+                updateChecklist();
+            });
+
+            $('#paymentModal').on('click', function(e) {
+                if (e.target === this) {
+                    testResults.outsideClick = true;
+                    updateChecklist();
+                }
+            });
+
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape' && $('#paymentModal').hasClass('active')) {
+                    testResults.escKey = true;
+                    updateChecklist();
+                }
+            });
+
+            function updateChecklist() {
+                const checklistItems = $('.checklist li');
+                
+                checklistItems.eq(0).find('i').attr('class', testResults.modalOpenClose ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(1).find('i').attr('class', testResults.productInfo ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(2).find('i').attr('class', testResults.tabSwitch ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(3).find('i').attr('class', testResults.qrcodeDisplay ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(4).find('i').attr('class', testResults.noticeInfo ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(5).find('i').attr('class', testResults.outsideClick ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(6).find('i').attr('class', testResults.escKey ? 'fas fa-check-circle' : 'fas fa-circle');
+                checklistItems.eq(7).find('i').attr('class', testResults.contactLink ? 'fas fa-check-circle' : 'fas fa-circle');
+            }
+
+            setTimeout(() => {
+                const qrcodeImages = $('.qrcode-img');
+                let allLoaded = true;
+                qrcodeImages.each(function() {
+                    if (!this.complete || typeof this.naturalWidth === "undefined" || this.naturalWidth === 0) {
+                        allLoaded = false;
+                    }
+                });
+                testResults.qrcodeDisplay = allLoaded;
+                testResults.noticeInfo = $('.payment-notice').length > 0 && $('.payment-refund-policy').length > 0;
+                testResults.contactLink = $('.payment-modal-footer a[href="tel:400-888-8888"]').length > 0;
+                updateChecklist();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

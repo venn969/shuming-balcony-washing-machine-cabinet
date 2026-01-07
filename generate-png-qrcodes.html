@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成 PNG 收款码占位符</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .qr-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .qr-section h2 {
+            margin-bottom: 15px;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        .download-btn.wechat {
+            background: linear-gradient(135deg, #07c160 0%, #05a050 100%);
+        }
+        .download-btn.alipay {
+            background: linear-gradient(135deg, #1677ff 0%, #0e5fd6 100%);
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .instructions h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            padding-left: 20px;
+            color: #666;
+            line-height: 1.8;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>生成 PNG 收款码占位符</h1>
+        
+        <div class="qr-section">
+            <h2 style="color: #07c160;">微信收款码占位符</h2>
+            <canvas id="wechatCanvas" width="300" height="300"></canvas>
+            <br>
+            <button class="download-btn wechat" onclick="downloadImage('wechatCanvas', 'wechat-pay.png')">
+                <i style="margin-right: 8px;">💚</i>下载微信收款码 PNG
+            </button>
+        </div>
+
+        <div class="qr-section">
+            <h2 style="color: #1677ff;">支付宝收款码占位符</h2>
+            <canvas id="alipayCanvas" width="300" height="300"></canvas>
+            <br>
+            <button class="download-btn alipay" onclick="downloadImage('alipayCanvas', 'alipay.png')">
+                <i style="margin-right: 8px;">💙</i>下载支付宝收款码 PNG
+            </button>
+        </div>
+
+        <div class="instructions">
+            <h3>使用说明：</h3>
+            <ol>
+                <li>点击上方按钮下载对应的收款码占位符图片</li>
+                <li>将下载的图片保存到 <code>assets/images/</code> 目录</li>
+                <li>使用真实的收款码图片替换这些占位符</li>
+                <li>确保文件名为 <code>wechat-pay.png</code> 和 <code>alipay.png</code></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function createQrPlaceholder(canvasId, title, borderColor) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, 300, 300);
+            
+            ctx.strokeStyle = borderColor;
+            ctx.lineWidth = 4;
+            ctx.strokeRect(2, 2, 296, 296);
+            
+            ctx.fillStyle = borderColor;
+            ctx.font = 'bold 28px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(title, 150, 130);
+            
+            ctx.fillStyle = '#666';
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillText('请替换为真实收款码', 150, 170);
+            
+            ctx.fillStyle = '#999';
+            ctx.font = '14px Arial, sans-serif';
+            ctx.fillText('保存为 ' + (canvasId === 'wechatCanvas' ? 'wechat-pay.png' : 'alipay.png'), 150, 200);
+        }
+        
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        window.onload = function() {
+            createQrPlaceholder('wechatCanvas', '微信收款码', '#07c160');
+            createQrPlaceholder('alipayCanvas', '支付宝收款码', '#1677ff');
+        };
+    </script>
+</body>
+</html>

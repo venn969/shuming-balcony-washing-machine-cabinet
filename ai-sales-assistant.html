@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI销售助手 - 舒铭阳台洗衣机柜</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/ai-sales-assistant.css">
+</head>
+<body>
+    <div class="ai-assistant-container">
+        <div class="ai-assistant-toggle" id="aiAssistantToggle">
+            <i class="bi bi-robot"></i>
+            <span>AI助手</span>
+        </div>
+
+        <div class="ai-assistant-chat" id="aiAssistantChat">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="avatar">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <div class="chat-title">
+                        <h5>舒铭AI销售助手</h5>
+                        <span class="status online">在线</span>
+                    </div>
+                </div>
+                <button class="close-btn" id="closeChat">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message assistant">
+                    <div class="message-avatar">
+                        <i class="bi bi-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>您好！我是舒铭的AI销售助手，很高兴为您服务！</p>
+                        <p>我可以帮您：</p>
+                        <ul>
+                            <li>🏠 推荐适合您阳台的洗衣机柜</li>
+                            <li>💰 咨询产品价格和优惠活动</li>
+                            <li>📏 了解测量和安装服务</li>
+                            <li>🛠️ 介绍产品材质和工艺</li>
+                            <li>📞 预约上门服务</li>
+                        </ul>
+                        <p>请问有什么可以帮助您的？</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions" id="quickActions">
+                <button class="quick-btn" data-action="product">产品推荐</button>
+                <button class="quick-btn" data-action="price">价格咨询</button>
+                <button class="quick-btn" data-action="service">服务介绍</button>
+                <button class="quick-btn" data-action="appointment">预约服务</button>
+            </div>
+
+            <div class="chat-input">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="messageInput" placeholder="输入您的问题...">
+                    <button class="btn btn-primary" id="sendMessage">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="assets/js/ai-sales-assistant.js"></script>
+</body>
+</html>

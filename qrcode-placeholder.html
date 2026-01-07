@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收款码占位符 - 右键保存</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .qrcode-box {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #333;
+            border-radius: 8px;
+            background: white;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .qrcode-box:hover {
+            transform: scale(1.05);
+        }
+        .wechat {
+            border-color: #07c160;
+        }
+        .alipay {
+            border-color: #1677ff;
+        }
+        .qrcode-box h3 {
+            margin: 0 0 20px 0;
+            font-size: 28px;
+        }
+        .wechat h3 {
+            color: #07c160;
+        }
+        .alipay h3 {
+            color: #1677ff;
+        }
+        .qrcode-box p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 16px;
+        }
+        .qrcode-box .small {
+            font-size: 14px;
+            color: #999;
+        }
+        .qr-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            color: #856404;
+            text-align: left;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .instructions ol {
+            line-height: 1.8;
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #5568d3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>舒铭阳台洗衣机柜 - 收款码占位符</h1>
+        <p style="color: #666; margin-bottom: 30px;">右键点击图片 → "图片另存为" → 保存到 assets/images/ 目录</p>
+        
+        <div class="qr-container">
+            <div>
+                <div class="qrcode-box wechat" id="wechatQr" title="右键保存图片">
+                    <h3>微信收款码</h3>
+                    <p>请替换为真实收款码</p>
+                    <p class="small">保存为 wechat-pay.png</p>
+                </div>
+                <p style="color: #07c160; font-weight: bold; margin-top: 10px;">右键保存 → wechat-pay.png</p>
+            </div>
+            
+            <div>
+                <div class="qrcode-box alipay" id="alipayQr" title="右键保存图片">
+                    <h3>支付宝收款码</h3>
+                    <p>请替换为真实收款码</p>
+                    <p class="small">保存为 alipay.png</p>
+                </div>
+                <p style="color: #1677ff; font-weight: bold; margin-top: 10px;">右键保存 → alipay.png</p>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>使用说明：</h3>
+            <ol>
+                <li>右键点击上方的收款码占位符图片</li>
+                <li>选择"图片另存为"或"Save image as"</li>
+                <li>将微信收款码保存为 <code>wechat-pay.png</code></li>
+                <li>将支付宝收款码保存为 <code>alipay.png</code></li>
+                <li>将这两个文件放置在 <code>assets/images/</code> 目录下</li>
+                <li><strong>重要：</strong>请替换为您真实的收款码图片！</li>
+            </ol>
+        </div>
+        
+        <button class="back-btn" onclick="window.location.href='products.html'">返回产品页面测试</button>
+    </div>
+</body>
+</html>

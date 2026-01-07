@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收款码占位符 - 生成并下载</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 900px;
+        }
+        .qr-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+        }
+        .qr-preview {
+            display: inline-block;
+            margin: 20px;
+            vertical-align: top;
+        }
+        .qr-preview canvas {
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #5568d3;
+        }
+        .wechat .download-btn {
+            background: #07c160;
+        }
+        .wechat .download-btn:hover {
+            background: #06ad56;
+        }
+        .alipay .download-btn {
+            background: #1677ff;
+        }
+        .alipay .download-btn:hover {
+            background: #0d5fcc;
+        }
+        .instructions {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 6px;
+            color: #856404;
+            text-align: left;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .instructions ol {
+            line-height: 1.8;
+        }
+        .instructions code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .back-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>舒铭阳台洗衣机柜 - 收款码占位符生成器</h1>
+        <p class="subtitle">点击下方按钮生成并下载收款码占位符图片</p>
+        
+        <div class="qr-section wechat">
+            <h2 style="color: #07c160;">微信收款码占位符</h2>
+            <div class="qr-preview">
+                <canvas id="wechatCanvas" width="300" height="300"></canvas>
+                <br>
+                <button class="download-btn" onclick="downloadImage('wechatCanvas', 'wechat-pay.png')">
+                    <i style="margin-right: 8px;">💚</i>下载微信收款码
+                </button>
+            </div>
+        </div>
+        
+        <div class="qr-section alipay">
+            <h2 style="color: #1677ff;">支付宝收款码占位符</h2>
+            <div class="qr-preview">
+                <canvas id="alipayCanvas" width="300" height="300"></canvas>
+                <br>
+                <button class="download-btn" onclick="downloadImage('alipayCanvas', 'alipay.png')">
+                    <i style="margin-right: 8px;">💙</i>下载支付宝收款码
+                </button>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>使用说明：</h3>
+            <ol>
+                <li>点击上方按钮下载对应的收款码占位符图片</li>
+                <li>将下载的图片保存到 <code>assets/images/</code> 目录下</li>
+                <li>确保文件名分别为 <code>wechat-pay.png</code> 和 <code>alipay.png</code></li>
+                <li><strong>重要：</strong>请替换为您真实的收款码图片！</li>
+                <li>建议图片尺寸为 300x300 像素或更大</li>
+                <li>替换后，产品页面的支付功能即可正常使用</li>
+            </ol>
+        </div>
+        
+        <button class="back-btn" onclick="window.location.href='products.html'">返回产品页面测试</button>
+    </div>
+
+    <script>
+        function createQrPlaceholder(canvasId, title, borderColor) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, 300, 300);
+            
+            ctx.strokeStyle = borderColor;
+            ctx.lineWidth = 4;
+            ctx.strokeRect(2, 2, 296, 296);
+            
+            ctx.fillStyle = borderColor;
+            ctx.font = 'bold 28px Arial, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(title, 150, 130);
+            
+            ctx.fillStyle = '#666';
+            ctx.font = '18px Arial, sans-serif';
+            ctx.fillText('请替换为真实收款码', 150, 170);
+            
+            ctx.fillStyle = '#999';
+            ctx.font = '14px Arial, sans-serif';
+            ctx.fillText('保存为 ' + (canvasId === 'wechatCanvas' ? 'wechat-pay.png' : 'alipay.png'), 150, 200);
+        }
+        
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        window.onload = function() {
+            createQrPlaceholder('wechatCanvas', '微信收款码', '#07c160');
+            createQrPlaceholder('alipayCanvas', '支付宝收款码', '#1677ff');
+        };
+    </script>
+</body>
+</html>
